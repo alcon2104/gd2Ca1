@@ -1,37 +1,42 @@
 package com.dkit.gd2.alexconnolly;
 
-public class Student {
-    public int studentNum;
-    public int[] courseCode;
-    public int[] courseMark;
+import java.util.ArrayList;
 
-    public Student(int studentNum, int[] courseCode, int[] courseMark) {
+public class Student {
+    private int studentNum;
+    private ArrayList<Integer> courseCodes;
+    private ArrayList<Integer> courseMarks;
+
+
+    public Student(int studentNum, ArrayList<Integer> courseCodes, ArrayList<Integer> courseMarks) {
         this.studentNum = studentNum;
-        this.courseCode = courseCode;
-        this.courseMark = courseMark;
+        this.courseCodes = courseCodes;
+        this.courseMarks = courseMarks;
     }
 
-    public int getStudentNum() {
+    public int getStudentNum()
+    {
         return studentNum;
     }
 
-    public int[] getCourseCode() {
-        return courseCode;
+    public ArrayList<Integer> getCourseCode()
+    {
+        return courseCodes;
     }
 
-    public int[] getCourseMark() {
-        return courseMark;
+    public ArrayList<Integer> getCourseMark()
+    {
+        return courseMarks;
     }
 
-    public void setStudentNum(int studentNum) {
-        this.studentNum = studentNum;
-    }
-
-    public void setCourseCode(int[] courseCode) {
-        this.courseCode = courseCode;
-    }
-
-    public void setCourseMark(int[] courseMark) {
-        this.courseMark = courseMark;
+    @Override
+    public String toString()
+    {
+        return "Student{" +
+                "studentNum=" + studentNum +
+                ", courseCode=" + courseCodes +
+                ", courseMark=" + courseMarks +
+                '}';
     }
 }
+
