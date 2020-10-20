@@ -1,14 +1,15 @@
 package com.dkit.gd2.alexconnolly;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class Student {
+public class Student extends ArrayList<Student> {
     private int studentNum;
     private ArrayList<Integer> courseCodes;
     private ArrayList<Integer> courseMarks;
 
 
-    public Student(int studentNum, ArrayList<Integer> courseCodes, ArrayList<Integer> courseMarks) {
+    public Student(int studentNum, List<Integer> courseCodes, List<Integer> courseMarks) {
         this.studentNum = studentNum;
         this.courseCodes = courseCodes;
         this.courseMarks = courseMarks;
@@ -19,12 +20,12 @@ public class Student {
         return studentNum;
     }
 
-    public ArrayList<Integer> getCourseCode()
+    public ArrayList<Integer> getCourseCodes()
     {
         return courseCodes;
     }
 
-    public ArrayList<Integer> getCourseMark()
+    public ArrayList<Integer> getCourseMarks()
     {
         return courseMarks;
     }
