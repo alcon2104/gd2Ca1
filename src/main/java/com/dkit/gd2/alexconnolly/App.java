@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -50,30 +51,41 @@ public class App
 
     public static double selectFiveGrades(ArrayList<Student> students)
     {
-        int target = 0;
         int[] withoutCspe = new int[]{};
-        int[] selectedGrades = new int[]{};
-        for(int i = 0; i< grades.length; i++)
+        ArrayList<Integer>selectedGrades = new ArrayList<>();
+        for(Student student : students)
         {
-            if(codes[i] == 218)
+            if(student.getCourseCodes().contains(1) || student.getCourseCodes().contains(2) ||
+                    student.getCourseCodes().contains(3))
             {
-                ArrayUtils.remove(grades, i);
+                selectedGrades.add(student.getCourseMarks().indexOf(student.getCourseCodes().indexOf(1)));
+                selectedGrades.add(student.getCourseMarks().indexOf(student.getCourseCodes().indexOf(2)));
+                selectedGrades.add(student.getCourseMarks().indexOf(student.getCourseCodes().indexOf(3)));
+
+//                student.remove(student.getCourseMarks().indexOf(student.getCourseCodes().indexOf(1)));
+//                student.remove(student.getCourseMarks().indexOf(student.getCourseCodes().indexOf(2)));
+//                student.remove(student.getCourseMarks().indexOf(student.getCourseCodes().indexOf(3)));
             }
+
+            if(student.getCourseCodes().contains(218))
+            {
+                student.getCourseMarks().remove(student.getCourseMarks().indexOf(student.getCourseCodes().indexOf(218)));
+            }
+
+            Collections.reverse(student.getCourseMarks());
+            selectedGrades.add(student.getCourseMarks().get(0));
+            selectedGrades.add(student.getCourseMarks().get(1));
         }
-        Arrays.sort(grades);
-        ArrayUtils.reverse(grades);
-        System.arraycopy(grades,0,selectedGrades,0,4);
         return (calculateAverage(selectedGrades));
     }
 
-    public static double calculateAverage(int[] selectedGrades)
+    public static double calculateAverage(ArrayList<Integer> selectedGrades)
     {
         double average = 0;
-        for(int i = 0; i<selectedGrades.length; i++)
+        for(int i = 0; i<selectedGrades.size(); i++)
         {
-            average = average + selectedGrades[i];
+            average = average + selectedGrades.get(i);
         }
-        average = average / 5;
-        return average;
+        return average / 5;
     }
 }

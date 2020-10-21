@@ -15,58 +15,222 @@ import java.util.List;
 public class AppTest 
 {
     @Test
-    public static void selectFiveGradesT1()
+    public void selectFiveGradesT1()
     {
         /*Testing with one student*/
-        List<Integer> courseCodes = Arrays.asList(1, 2, 3, 13, 41, 52, 81, 125);
-        List<Integer> courseMarks = Arrays.asList(62, 85, 49, 54, 60, 73, 62, 69);
+        ArrayList<Integer> courseCodes = new ArrayList<>();/*Arrays.asList(1, 2, 3, 13, 41, 52, 81, 125);*/
+        ArrayList<Integer> courseMarks = new ArrayList<>();/*Arrays.asList(62, 85, 49, 54, 60, 73, 62, 69);*/
 
+        courseCodes.add(1);
+        courseCodes.add(2);
+        courseCodes.add(3);
+        courseCodes.add(13);
+        courseCodes.add(41);
+        courseCodes.add(52);
+        courseCodes.add(81);
+        courseCodes.add(125);
+        courseMarks.add(62);
+        courseMarks.add(85);
+        courseMarks.add(49);
+        courseMarks.add(54);
+        courseMarks.add(60);
+        courseMarks.add(73);
+        courseMarks.add(62);
+        courseMarks.add(69);
+
+        ArrayList<Student> students = new ArrayList<>();
         Student test1 = new Student(123456, courseCodes, courseMarks);
-        assertEquals(67.6, App.selectFiveGrades(test1), 0.0000001);
+        students.add(test1);
+
+        assertEquals( 67.6, App.selectFiveGrades(students), 0.0000001);
     }
 
-    public static void selectFiveGradesT2() {
+    public void selectFiveGradesT2() {
         /*Testing with 4 students*/
-        List<Integer> courseCodes = Arrays.asList(1, 2, 3, 40, 10, 6, 7, 12);
-        List<Integer> courseMarks = Arrays.asList(96, 26, 38, 57, 28, 38, 47, 38);
+        ArrayList<Integer> courseCodes = new ArrayList<>();
+        ArrayList<Integer> courseMarks = new ArrayList<>();
 
-        List<Integer> courseCodes2 = Arrays.asList(1, 2, 3, 27, 82, 100, 137, 565);
-        List<Integer> courseMarks2 = Arrays.asList(47, 29, 38, 58, 69, 94, 85, 73);
+        ArrayList<Integer> courseCodes2 = new ArrayList<>();
+        ArrayList<Integer> courseMarks2 = new ArrayList<>();
 
-        List<Integer> courseCodes3 = Arrays.asList(1, 2, 3, 65, 52, 47, 125, 218);
-        List<Integer> courseMarks3 = Arrays.asList(45, 79, 23, 67, 34, 65, 92, 76);
+        ArrayList<Integer> courseCodes3 = new ArrayList<>();
+        ArrayList<Integer> courseMarks3 = new ArrayList<>();
 
-        List<Integer> courseCodes4 = Arrays.asList(1, 2, 3, 83, 82, 10, 11, 12);
-        List<Integer> courseMarks4 = Arrays.asList(26, 87, 36, 49, 60, 70, 49, 91);
+        ArrayList<Integer> courseCodes4 = new ArrayList<>();
+        ArrayList<Integer> courseMarks4 = new ArrayList<>();
+
+        courseCodes.add(1);
+        courseCodes.add(2);
+        courseCodes.add(3);
+        courseCodes.add(40);
+        courseCodes.add(10);
+        courseCodes.add(6);
+        courseCodes.add(7);
+        courseCodes.add(12);
+        courseMarks.add(96);
+        courseMarks.add(26);
+        courseMarks.add(38);
+        courseMarks.add(57);
+        courseMarks.add(28);
+        courseMarks.add(38);
+        courseMarks.add(47);
+        courseMarks.add(38);
+
+        courseCodes2.add(1);
+        courseCodes2.add(2);
+        courseCodes2.add(3);
+        courseCodes2.add(27);
+        courseCodes2.add(82);
+        courseCodes2.add(100);
+        courseCodes2.add(137);
+        courseCodes2.add(565);
+        courseMarks2.add(47);
+        courseMarks2.add(29);
+        courseMarks2.add(38);
+        courseMarks2.add(58);
+        courseMarks2.add(69);
+        courseMarks2.add(94);
+        courseMarks2.add(85);
+        courseMarks2.add(73);
+
+        courseCodes3.add(1);
+        courseCodes3.add(2);
+        courseCodes3.add(3);
+        courseCodes3.add(65);
+        courseCodes3.add(52);
+        courseCodes3.add(47);
+        courseCodes3.add(125);
+        courseCodes3.add(12);
+        courseMarks3.add(45);
+        courseMarks3.add(79);
+        courseMarks3.add(23);
+        courseMarks3.add(67);
+        courseMarks3.add(34);
+        courseMarks3.add(65);
+        courseMarks3.add(92);
+        courseMarks3.add(76);
+
+        courseCodes4.add(1);
+        courseCodes4.add(2);
+        courseCodes4.add(3);
+        courseCodes4.add(83);
+        courseCodes4.add(82);
+        courseCodes4.add(10);
+        courseCodes4.add(11);
+        courseCodes4.add(12);
+        courseMarks4.add(26);
+        courseMarks4.add(87);
+        courseMarks4.add(36);
+        courseMarks4.add(49);
+        courseMarks4.add(60);
+        courseMarks4.add(70);
+        courseMarks4.add(49);
+        courseMarks4.add(91);
 
         Student test2s1 = new Student(123456, courseCodes, courseMarks);
-        Student test2s2 = new Student(286758, courseCodes, courseMarks);
-        Student test2s3 = new Student(307947, courseCodes, courseMarks);
-        Student test2s4 = new Student(285746, courseCodes, courseMarks);
+        Student test2s2 = new Student(286758, courseCodes2, courseMarks2);
+        Student test2s3 = new Student(307947, courseCodes3, courseMarks3);
+        Student test2s4 = new Student(285746, courseCodes4, courseMarks4);
 
-        assertEquals(60.4, App.selectFiveGrades(test2s1), 0.0000001);
-        assertEquals(73.2, App.selectFiveGrades(test2s2), 0.0000001);
-        assertEquals(76.4, App.selectFiveGrades(test2s3), 0.0000001);
-        assertEquals(78, App.selectFiveGrades(test2s4), 0.0000001);
+        ArrayList<Student> students = new ArrayList<>();
+        students.add(test2s1);
+        students.add(test2s2);
+        students.add(test2s3);
+        students.add(test2s4);
+
+        assertEquals(52.8, App.selectFiveGrades(students), 0.0000001);
+        assertEquals(58.6, App.selectFiveGrades(students), 0.0000001);
+        assertEquals(63, App.selectFiveGrades(students), 0.0000001);
+        assertEquals(62, App.selectFiveGrades(students), 0.0000001);
     }
 
-    public static void selectFiveGradesT3()
+    public void selectFiveGradesT3()
     {
         /*Testing with equal grade values*/
-        List<Integer> courseCodes = Arrays.asList(1, 2, 3, 13, 41, 52, 81, 125);
-        List<Integer> courseMarks = Arrays.asList(85, 85, 49, 54, 60, 73, 73, 69);
+        ArrayList<Integer> courseCodes = new ArrayList<>();
+        ArrayList<Integer> courseMarks = new ArrayList<>();
 
+        courseCodes.add(1);
+        courseCodes.add(2);
+        courseCodes.add(3);
+        courseCodes.add(13);
+        courseCodes.add(41);
+        courseCodes.add(52);
+        courseCodes.add(81);
+        courseCodes.add(125);
+        courseMarks.add(85);
+        courseMarks.add(85);
+        courseMarks.add(49);
+        courseMarks.add(54);
+        courseMarks.add(60);
+        courseMarks.add(73);
+        courseMarks.add(73);
+        courseMarks.add(69);
+
+        ArrayList<Student> students = new ArrayList<>();
         Student test3 = new Student(123456, courseCodes, courseMarks);
-        assertEquals(86.8, App.selectFiveGrades(test3), 0.0000001);
+        students.add(test3);
+
+        assertEquals(73, App.selectFiveGrades(students), 0.0000001);
     }
 
-    public static void selectFiveGradesT4()
+    public void selectFiveGradesT4()
     {
         /*Testing with CSPE*/
-        List<Integer> courseCodes = Arrays.asList(1, 2, 3, 13, 41, 218, 81, 125);
-        List<Integer> courseMarks = Arrays.asList(62, 85, 49, 54, 60, 73, 62, 69);
+        ArrayList<Integer> courseCodes = new ArrayList<>();
+        ArrayList<Integer> courseMarks = new ArrayList<>();
 
+        courseCodes.add(1);
+        courseCodes.add(2);
+        courseCodes.add(3);
+        courseCodes.add(13);
+        courseCodes.add(41);
+        courseCodes.add(218);
+        courseCodes.add(81);
+        courseCodes.add(125);
+        courseMarks.add(62);
+        courseMarks.add(85);
+        courseMarks.add(49);
+        courseMarks.add(54);
+        courseMarks.add(60);
+        courseMarks.add(73);
+        courseMarks.add(62);
+        courseMarks.add(69);
+
+        ArrayList<Student> students = new ArrayList<>();
         Student test4 = new Student(123456, courseCodes, courseMarks);
-        assertEquals(77.4, App.selectFiveGrades(test4), 0.0000001);
+        students.add(test4);
+
+        assertEquals(67.6, App.selectFiveGrades(students), 0.0000001);
+    }
+
+    public void selectFiveGradesT5()
+    {
+        /*Testing with Maths Irish and English in different places than the beginning*/
+        ArrayList<Integer> courseCodes = new ArrayList<>();
+        ArrayList<Integer> courseMarks = new ArrayList<>();
+
+        courseCodes.add(11);
+        courseCodes.add(1);
+        courseCodes.add(12);
+        courseCodes.add(2);
+        courseCodes.add(10);
+        courseCodes.add(3);
+        courseCodes.add(81);
+        courseCodes.add(125);
+        courseMarks.add(61);
+        courseMarks.add(85);
+        courseMarks.add(49);
+        courseMarks.add(54);
+        courseMarks.add(60);
+        courseMarks.add(73);
+        courseMarks.add(62);
+        courseMarks.add(69);
+
+        ArrayList<Student> students = new ArrayList<>();
+        Student test5 = new Student(123456, courseCodes, courseMarks);
+        students.add(test5);
+
+        assertEquals(68.6, App.selectFiveGrades(students), 0.0000001);
     }
 }

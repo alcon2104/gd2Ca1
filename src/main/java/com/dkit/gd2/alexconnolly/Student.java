@@ -9,7 +9,7 @@ public class Student extends ArrayList<Student> {
     private ArrayList<Integer> courseMarks;
 
 
-    public Student(int studentNum, List<Integer> courseCodes, List<Integer> courseMarks) {
+    public Student(int studentNum, ArrayList<Integer> courseCodes, ArrayList<Integer> courseMarks) {
         this.studentNum = studentNum;
         this.courseCodes = courseCodes;
         this.courseMarks = courseMarks;
