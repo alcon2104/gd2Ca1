@@ -5,16 +5,13 @@ import org.apache.commons.lang3.ArrayUtils;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Hello world!
  *
  */
-public class App 
+public class App
 {
     public void main(String[] args)
     {
@@ -51,41 +48,62 @@ public class App
 
     public static double selectFiveGrades(ArrayList<Student> students)
     {
-        int[] withoutCspe = new int[]{};
-        ArrayList<Integer>selectedGrades = new ArrayList<>();
-        for(Student student : students)
-        {
-            if(student.getCourseCodes().contains(1) || student.getCourseCodes().contains(2) ||
-                    student.getCourseCodes().contains(3))
-            {
-                selectedGrades.add(student.getCourseMarks().indexOf(student.getCourseCodes().indexOf(1)));
-                selectedGrades.add(student.getCourseMarks().indexOf(student.getCourseCodes().indexOf(2)));
-                selectedGrades.add(student.getCourseMarks().indexOf(student.getCourseCodes().indexOf(3)));
+        /*
+         * Setting up a new ArrayList that the 5 selected courseMarks
+         * will be entered into
+         */
+        int[] selectedGrades = new int[5];
+        for(Student student : students) {
+            Collections.sort(student.getCourseCodes());
+            System.out.println(student.getCourseCodes());
+            if (student.getCourseCodes().contains(1) || student.getCourseCodes().contains(2) ||
+                    student.getCourseCodes().contains(3)) {
+                /*
+                 * The method will add the courseMarks that correspond with courseCode 1, 2 or 3 to the selectedGrades ArrayList, and then removes
+                 * them from the courseMarks ArrayList so that they won't be re-entered at the end of the method
+                 */
+                selectedGrades[0] = (student.getCourseMarks().get(student.getCourseCodes().indexOf(1)));
+                selectedGrades[1] = (student.getCourseMarks().get(student.getCourseCodes().indexOf(2)));
+                selectedGrades[2] = (student.getCourseMarks().get(student.getCourseCodes().indexOf(3)));
 
-//                student.remove(student.getCourseMarks().indexOf(student.getCourseCodes().indexOf(1)));
-//                student.remove(student.getCourseMarks().indexOf(student.getCourseCodes().indexOf(2)));
-//                student.remove(student.getCourseMarks().indexOf(student.getCourseCodes().indexOf(3)));
+                student.getCourseMarks().remove(0);
+                student.getCourseMarks().remove(0);
+                student.getCourseMarks().remove(0);
+
             }
 
-            if(student.getCourseCodes().contains(218))
-            {
-                student.getCourseMarks().remove(student.getCourseMarks().indexOf(student.getCourseCodes().indexOf(218)));
-            }
+            Collections.sort(student.getCourseMarks(), Collections.reverseOrder());
 
-            Collections.reverse(student.getCourseMarks());
-            selectedGrades.add(student.getCourseMarks().get(0));
-            selectedGrades.add(student.getCourseMarks().get(1));
+
+            selectedGrades[3] = (student.getCourseMarks().get(0));
+            selectedGrades[4] = (student.getCourseMarks().get(1));
         }
-        return (calculateAverage(selectedGrades));
+        return (calculateAverage(selectedGrades, students));
     }
 
-    public static double calculateAverage(ArrayList<Integer> selectedGrades)
+    public static double calculateAverage(int[] selectedGrades, ArrayList<Student> students)
     {
         double average = 0;
-        for(int i = 0; i<selectedGrades.size(); i++)
+        for(int i = 0; i<selectedGrades.length; i++)
         {
-            average = average + selectedGrades.get(i);
+            /*
+             * Adds all of the values together and sets the total as the average value
+             */
+            average = average + selectedGrades[i];
         }
-        return average / 5;
+        /*
+         * Divides the average by the number of marks sent into the method, and returns the answer.
+         */
+        average = average / 5;
+
+        /*
+        * Prints out student number and corresponding average for each test
+        */
+        for(Student student : students)
+        {
+            System.out.println(student.getStudentNum() + ", " + average);
+        }
+
+        return average;
     }
 }

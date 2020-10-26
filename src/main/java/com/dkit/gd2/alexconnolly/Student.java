@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Student extends ArrayList<Student> {
+    /*
+    * Sets up and object class for every student in the students.txt
+    * file and any others that are used in the test file
+    */
     private int studentNum;
     private ArrayList<Integer> courseCodes;
     private ArrayList<Integer> courseMarks;
@@ -15,6 +19,10 @@ public class Student extends ArrayList<Student> {
         this.courseMarks = courseMarks;
     }
 
+    /*
+    * Getters are called to use specific values relating to a Student
+    * object, so that they can be used in methods and single commands.
+    */
     public int getStudentNum()
     {
         return studentNum;
@@ -30,6 +38,10 @@ public class Student extends ArrayList<Student> {
         return courseMarks;
     }
 
+    /*
+    * toString method will print out a Student object, including
+    * all of its values.
+    */
     @Override
     public String toString()
     {
